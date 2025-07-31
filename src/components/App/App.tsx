@@ -4,12 +4,7 @@ import VoteOptions from "../VoteOptions/VoteOptions";
 import VoteStats from "../VoteStats/VoteStats";
 import css from "./App.module.css";
 import { useState } from "react";
-
-interface Votes {
-  good: number;
-  neutral: number;
-  bad: number;
-}
+import { type Votes, type VoteType } from "../../types/votes";
 
 function App() {
  const [votes, setVotes] = useState<Votes>({
@@ -18,7 +13,7 @@ function App() {
    bad: 0,
  });
   
-  function handleVote(type: keyof typeof votes) {
+  function handleVote(type: VoteType) {
     setVotes((prevVotes) => ({
       ...prevVotes,
       [type]: prevVotes[type] + 1,
